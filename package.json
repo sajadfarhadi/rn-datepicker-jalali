@@ -1,0 +1,16 @@
+{
+  "name": "react-native-bmc-datepick",
+  "version": "1.0.2",
+  "main": "index.js",
+  "dependencies": {
+    "jalali-moment": "^3.3.10",
+    "react-native-modal": "^12.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
