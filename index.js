@@ -1,9 +1,9 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
-import { View, TextInput, Image, Text, StyleSheet, TouchableOpacity, I18nManager, FlatList, Animated, Easing } from 'react-native';
+import React, { Component, useState, useEffect, useRef, } from 'react';
+import { View, TextInput, Image, Text, StyleSheet, TouchableOpacity, I18nManager, FlatList, Animated, Easing,Dimensions } from 'react-native';
 import { font, Cred, CText, Cplaceholder, font_light, Cblue1, C999, Ccomponent, CTextGray, font_bold, Charchol, Cwhite2, Cwhite, font_medium, Cblue1O5, Charchol_light, Cred2O10 } from './src/Static';
 import Modal from 'react-native-modal';
 import GlobalFunction from './src/GlobalFunction';
-const GLOBAL = require('../../core/g_var');
+const GLOBAL = Dimensions.get('window');
 
 import moment from 'jalali-moment';
 let todayChange = true
@@ -13,7 +13,7 @@ function DateS(props) {
     const [value, setValue] = useState("");
     const [error, setError] = useState(false);
     const [status, setStatus] = useState("day");
-    const [modal, setModal] = useState(true);
+    const [modal, setModal] = useState(false);
     const [errorText, setErrorText] = useState("");
     const [year, setYear] = useState(1399);
     const [month, setMonth] = useState(1);
@@ -45,6 +45,7 @@ function DateS(props) {
         // props.value ? setDay(props.value.split("/")[2]) : null
         getToday()
     }, []);
+    useEffect(() => {if(props.open)setModal(true) }, [props])
     useEffect(() => { checkValidateRange("day") }, [day])
     useEffect(() => { checkValidateRange("month") }, [month])
     useEffect(() => { checkValidateRange("year") }, [year])
@@ -146,20 +147,20 @@ function DateS(props) {
     }
     return (
         <View style={[styles.viewC1, props.style]}>
-            <Text style={styles.textC1}>{props.label}</Text>
-            <View style={[styles.view2C1, {
+            {/* <Text style={styles.textC1}>{props.label}</Text> */}
+            {/* <View style={[styles.view2C1, {
                 borderBottomWidth: ((error || props.error) || focus) ? 1.5 : 1,
                 borderTopWidth: ((error || props.error) || focus) ? 1.5 : 1,
                 borderColor: (error || props.error) ? Cred : focus ? Cblue1 : C999,
-            }]}>
-                {(error || props.error) &&
+            }]}> */}
+                {/* {(error || props.error) &&
                     <TouchableOpacity onPress={() =>null} style={styles.view3C1}>
-                        {/*<Icon2 name="book-information-variant" size={10} color={Cred}/>*/}
-                        {/* <Icon3 name="info-outline" size={25} color={Cred} /> */}
+                         <Icon2 name="book-information-variant" size={10} color={Cred}/>
+                        <Icon3 name="info-outline" size={25} color={Cred} />
                     </TouchableOpacity>
-                }
-                {props.prefix}
-                <Text
+                } */}
+                {/* {props.prefix} */}
+                {/* <Text
                     style={[styles.inputC1, { backgroundColor: "transparent", color: CText }]}
                     underlineColorAndroid={'transparent'}
                     placeholderTextColor={"Cplaceholder"}
@@ -168,9 +169,9 @@ function DateS(props) {
                     placeholder={props.placeholder}
                 >
                     {(props.value && !props.range) ? props.value.year + "/" + props.value.month + "/" + props.value.day : props.range ? value : null}
-                </Text>
+                </Text> */}
 
-            </View>
+            {/* </View> */}
             <Modal
                 onBackdropPress={() => setModal(false)}
                 // avoidKeyboard={false}
@@ -198,7 +199,7 @@ function DateS(props) {
                         </TouchableOpacity>
                     </View>
                     }
-                    <View style={{ width: "100%", justifyContent: "space-around", flexDirection: "row", marginTop: 10 }}>
+                    <View style={{ width: "100%", justifyContent: "space-around", flexDirection: "row", marginTop: 10 ,marginBottom:13}}>
                         {props.range && <Animated.View style={[styles.symbolView, { left: AnimSymbol }]} />}
                         <TouchableOpacity onPress={() => { setStatus("year"); refContainer.current ? refContainer.current.scrollToIndex({ animated: true, index: 2 }) : null }} style={{ alignItems: "center" }}>
                             <Text style={[styles.textSelected, { color: status == "year" ? Cblue1 : Charchol }]}>{year}</Text>
@@ -345,7 +346,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1, shadowColor: Cwhite
     },
     badgeSelected: { width: 8, height: 8, borderRadius: 4, backgroundColor: Cblue1, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0 },
-    viewBadge: { width: 10, height: 10, borderRadius: 50, bottom: -7, zIndex: 20, position: "absolute" },
+    viewBadge: { width: 10, height: 10, borderRadius: 50, bottom: -20, zIndex: 20, position: "absolute" },
     viewToday: { alignItems: "center", justifyContent: "center", borderRadius: 10, alignSelf: "center", width: 50, height: 50, },
     symbolView: { width: 20, height: 20, transform: [{ rotate: '45deg' }], backgroundColor: Cwhite2, position: "absolute", top: -20, borderTopLeftRadius: 3 }
 });

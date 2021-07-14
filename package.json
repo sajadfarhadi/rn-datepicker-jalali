@@ -1,6 +1,6 @@
 {
-  "name": "react-native-bmc-datepick",
-  "version": "1.0.2",
+  "name": "react-native-datapicker-test9",
+  "version": "1.0.5",
   "main": "index.js",
   "dependencies": {
     "jalali-moment": "^3.3.10",
@@ -12,5 +12,14 @@
   },
   "author": "",
   "license": "ISC",
+ 
+  "bugs": {
+    "url": "https://gitlab.com/sajad.farhadi1994/datapicker/issues"
+  },
+  "homepage": "https://gitlab.com/sajad.farhadi1994/datapicker#readme",
+  "repository": {
+    "type": "git",
+    "url": "test"
+  },
   "description": ""
 }
