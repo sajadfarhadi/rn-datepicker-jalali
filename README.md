@@ -1,6 +1,6 @@
 # RN-DATEPICKER-JALALI
 
-![alt-text](https://github.com/sajadfarhadi/rn-datepicker-jalali/raw/master/help/rangePicker.png?raw=true)
+![alt-text](./help/rangePicker.png?raw=true)
 
 
 ## Installation
