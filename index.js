@@ -124,12 +124,14 @@ function DateS(props) {
                 // console.warn(dateStartText + "الی" + dateEndText)
                 setValue(dateStartText + " الی " + dateEndText)
                 setModal(false)
+                props.onClose()
             }
         }
         else {
             props.onChange({ day: parseInt(day) < 10 ? "0" + day : day, month: parseInt(month) < 10 ? "0" + month : month, year: year })
             setValue(year + "/" + parseInt(month) < 10 ? "0" + month : month + "/" + parseInt(day) < 10 ? "0" + day : day)
             setModal(false)
+            props.onClose()
         }
     }
     function header() {
@@ -147,33 +149,8 @@ function DateS(props) {
     }
     return (
         <View style={[styles.viewC1, props.style]}>
-            {/* <Text style={styles.textC1}>{props.label}</Text> */}
-            {/* <View style={[styles.view2C1, {
-                borderBottomWidth: ((error || props.error) || focus) ? 1.5 : 1,
-                borderTopWidth: ((error || props.error) || focus) ? 1.5 : 1,
-                borderColor: (error || props.error) ? Cred : focus ? Cblue1 : C999,
-            }]}> */}
-                {/* {(error || props.error) &&
-                    <TouchableOpacity onPress={() =>null} style={styles.view3C1}>
-                         <Icon2 name="book-information-variant" size={10} color={Cred}/>
-                        <Icon3 name="info-outline" size={25} color={Cred} />
-                    </TouchableOpacity>
-                } */}
-                {/* {props.prefix} */}
-                {/* <Text
-                    style={[styles.inputC1, { backgroundColor: "transparent", color: CText }]}
-                    underlineColorAndroid={'transparent'}
-                    placeholderTextColor={"Cplaceholder"}
-                    onBlur={() => { setFocus(false) }}
-                    onPress={() => { !props.disable ? setModal(true) : null }}
-                    placeholder={props.placeholder}
-                >
-                    {(props.value && !props.range) ? props.value.year + "/" + props.value.month + "/" + props.value.day : props.range ? value : null}
-                </Text> */}
-
-            {/* </View> */}
             <Modal
-                onBackdropPress={() => setModal(false)}
+                onBackdropPress={() => {setModal(false);props.onClose();}}
                 // avoidKeyboard={false}
                 backdropOpacity={.7}
                 style={{ justifyContent: 'flex-end', margin: 0 }}
@@ -192,7 +169,7 @@ function DateS(props) {
                             <Text style={[styles.rangeText, { color: !startToggle ? Cblue1 : Cplaceholder }]}>تاریخ پایان</Text>
                             <Text style={[styles.rangeText2, { color: !startToggle ? Charchol_light : Cplaceholder }]}>{dateEndText}</Text>
                         </TouchableOpacity>
-                        {/* <FontIcon color={Cplaceholder} name='back' style={{ margin: 10, transform: [{ rotate: '180deg' }] }} size={Math.min(GLOBAL.width / 20, 30)} /> */}
+                        <Image source={require('./src/arrow.png')} color={Cplaceholder} name='back' style={{width:25,height:25 }}  />
                         <TouchableOpacity onPress={() => { Animated.timing(AnimSymbol, { toValue: GLOBAL.width / 1.4, duration: 200, easing: Easing.linear }).start(() => setStartToggle(true)) }} style={{ alignItems: "center" }}>
                             <Text style={[styles.rangeText, { color: startToggle ? Cblue1 : Cplaceholder }]}>تاریخ شروع</Text>
                             <Text style={[styles.rangeText2, { color: startToggle ? Charchol_light : Cplaceholder }]}>{dateStartText}</Text>

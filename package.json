@@ -1,5 +1,5 @@
 {
-  "name": "react-native-datapicker-test9",
+  "name": "rn-datepicker-jalali",
   "version": "1.0.5",
   "main": "index.js",
   "dependencies": {
@@ -12,7 +12,6 @@
   },
   "author": "",
   "license": "ISC",
- 
   "bugs": {
     "url": "https://gitlab.com/sajad.farhadi1994/datapicker/issues"
   },
