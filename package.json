@@ -1,6 +1,6 @@
 {
   "name": "rn-datepicker-jalali",
-  "version": "1.0.5",
+  "version": "1.1.2",
   "main": "index.js",
   "dependencies": {
     "jalali-moment": "^3.3.10",
@@ -13,12 +13,12 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/sajad.farhadi1994/datapicker/issues"
+    "url": "https://github.com/sajadfarhadi/rn-datepicker-jalali"
   },
-  "homepage": "https://gitlab.com/sajad.farhadi1994/datapicker#readme",
+  "homepage": "https://github.com/sajadfarhadi/rn-datepicker-jalali",
   "repository": {
     "type": "git",
     "url": "test"
   },
-  "description": ""
+  "description": "first version"
 }
